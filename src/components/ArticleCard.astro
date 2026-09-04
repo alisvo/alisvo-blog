@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+const formattedDate = new Date(post.data.pubDate).toLocaleDateString('tr-TR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="group relative flex flex-col p-6 rounded-xl bg-white dark:bg-dark-card border border-slate-200/80 dark:border-dark-cardBorder hover:border-emerald-500/50 dark:hover:border-emerald-500/50 shadow-sm hover:shadow-md transition-all duration-200">
+  <div class="flex items-center gap-3 text-xs font-mono text-slate-600 dark:text-slate-300 mb-3">
+    <time datetime={post.data.pubDate.toISOString()}>
+      {formattedDate}
+    </time>
+    <span>•</span>
+    <span>{post.data.readingTime || '5 dk okuma'}</span>
+    {post.data.featured && (
+      <>
+        <span>•</span>
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide uppercase bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+          Öne Çıkan
+        </span>
+      </>
+    )}
+  </div>
+
+  <h3 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+    <a href={`/blog/${post.id}`} class="focus:outline-none focus:underline">
+      <span class="absolute inset-0 z-0"></span>
+      {post.data.title}
+    </a>
+  </h3>
+
+  <p class="mt-2.5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">
+    {post.data.description}
+  </p>
+
+  <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between z-10">
+    <div class="flex flex-wrap gap-1.5">
+      {post.data.tags.slice(0, 3).map((tag) => (
+        <span class="text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 font-mono">
+          #{tag}
+        </span>
+      ))}
+      {post.data.tags.length > 3 && (
+        <span class="text-xs text-slate-600 dark:text-slate-400 self-center">
+          +{post.data.tags.length - 3}
+        </span>
+      )}
+    </div>
+
+    <span class="inline-flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">
+      Devamını Oku
+      <svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </span>
+  </div>
+</article>

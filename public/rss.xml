@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ali Sağırvelioğulları | Senior DBA Blog</title>
+    <link>https://alisvo.dev</link>
+    <description>PostgreSQL, Oracle, MSSQL, Yüksek Erişilebilirlik ve Veritabanı Performans Optimizasyonu Rehberleri.</description>
+    <language>tr-tr</language>
+    <atom:link href="https://alisvo.dev/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>Veritabanı Felaket Kurtarma (Disaster Recovery): RPO ve RTO Prensipleri</title>
+      <link>https://alisvo.dev/blog/veritabani-felaket-kurtarma-rpo-rto/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/veritabani-felaket-kurtarma-rpo-rto/</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Veri kaybına tahammülü olmayan kurumsal sistemlerde RPO ve RTO matematiği, PITR, WAL arşivleme, senkron replikasyon ve test edilmiş felaket kurtarma senaryoları.</description>
+    </item>
+    <item>
+      <title>PostgreSQL&apos;de EXPLAIN ANALYZE ile Sorgu Optimizasyonu ve Index Stratejileri</title>
+      <link>https://alisvo.dev/blog/postgresql-explain-analyze-optimizasyon/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-explain-analyze-optimizasyon/</guid>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Yavaş çalışan SQL sorgularını analiz etme, execution planları doğru okuma, Shared Buffers maliyetleri ve modern PostgreSQL index mimarileri üzerine kapsamlı DBA rehberi.</description>
+    </item>
+    <item>
+      <title>Oracle RMAN → Azure Blob: Quick Setup Guide</title>
+      <link>https://alisvo.dev/blog/oracle-rman-azure-blob-quick-setup-guide/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-rman-azure-blob-quick-setup-guide/</guid>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 GMT</pubDate>
+      <description>Oracle RMAN → Azure Blob Backup to Azure, the clean way Minimal steps, Oracle JDK only, and the recommended oracle.azure library alias. What you’ll need...</description>
+    </item>
+    <item>
+      <title>A Simple Script for Starting NON-RAC Oracle Databases with a DG configuration</title>
+      <link>https://alisvo.dev/blog/a-simple-script-for-starting-non-rac-oracle-databases-with-a-dg-configuration/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/a-simple-script-for-starting-non-rac-oracle-databases-with-a-dg-configuration/</guid>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 GMT</pubDate>
+      <description>Oracle Auto-Startup via Cron Use one of these two options to have both your primary and standby databases come up automatically on reboot. Paste the entire...</description>
+    </item>
+    <item>
+      <title>Postgresql Change Data Directory in the service</title>
+      <link>https://alisvo.dev/blog/postgresql-change-data-directory-in-the-service/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-change-data-directory-in-the-service/</guid>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate>
+      <description>Systemd ile yönetilen PostgreSQL servislerinde veri dizinini (data directory) güvenli bir şekilde farklı bir diske veya dizine taşıma.</description>
+    </item>
+    <item>
+      <title>PostgreSQL Maintenance Cheat Sheet</title>
+      <link>https://alisvo.dev/blog/postgresql-maintenance-cheat-sheet/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-maintenance-cheat-sheet/</guid>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL DBA&apos;leri için VACUUM, ANALYZE, REINDEX ve tablo şişmesi (bloat) yönetimini içeren hızlı başvuru rehberi.</description>
+    </item>
+    <item>
+      <title>Postgresql Restore Command Reference</title>
+      <link>https://alisvo.dev/blog/postgresql-restore-command-reference/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-restore-command-reference/</guid>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL Restore Commands Reference This guide covers the three primary methods to restore PostgreSQL data: using psql for plain‐text dumps, pg_restore...</description>
+    </item>
+    <item>
+      <title>Some Postgresql Backup Commands Reference</title>
+      <link>https://alisvo.dev/blog/some-postgresql-backup-commands-reference/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/some-postgresql-backup-commands-reference/</guid>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL pg_dump, pg_dumpall ve pg_restore komutları ile şema, tablo ve veri yedekleme pratik komut referansı.</description>
+    </item>
+    <item>
+      <title>PgBackRest Restore Scenario</title>
+      <link>https://alisvo.dev/blog/pgbackrest-restore-scenario/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/pgbackrest-restore-scenario/</guid>
+      <pubDate>Sat, 31 May 2025 00:00:00 GMT</pubDate>
+      <description>Rescuing a Dropped PostgreSQL Database: Two pgBackRest Paths to Success That sinking feeling when a DROP DATABASE command slips through... we&apos;ve all been...</description>
+    </item>
+    <item>
+      <title>PostgreSQL Cluster Commands</title>
+      <link>https://alisvo.dev/blog/postgresql-cluster-commands/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-cluster-commands/</guid>
+      <pubDate>Fri, 09 May 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL Cluster Control Cheat-Sheet 1 · What Exactly Is a “Cluster”? In PostgreSQL terminology, a cluster is a self-contained instance: one data...</description>
+    </item>
+    <item>
+      <title>Postgresql Config File Parameters</title>
+      <link>https://alisvo.dev/blog/postgresql-config-file-parameters/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-config-file-parameters/</guid>
+      <pubDate>Fri, 09 May 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL 16 Server Configuration &amp; Tuning Cheatsheet 1 · Parameter Fundamentals Case-insensitive names. Value types: boolean · integer · float · string ·...</description>
+    </item>
+    <item>
+      <title>Postgresql Data Dictionaries &amp; Functions</title>
+      <link>https://alisvo.dev/blog/postgresql-data-dictionaries-functions/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-data-dictionaries-functions/</guid>
+      <pubDate>Fri, 09 May 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL 16 Data Dictionary &amp; Catalog Cheat-Sheet PostgreSQL ships with a rich “data dictionary” — a collection of catalog tables , views and utility...</description>
+    </item>
+    <item>
+      <title>Error when Installing Some Postgresql Packages (Perl IPC-Run)</title>
+      <link>https://alisvo.dev/blog/error-when-installing-some-postgresql-packages-perl-ipc-run/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/error-when-installing-some-postgresql-packages-perl-ipc-run/</guid>
+      <pubDate>Thu, 08 May 2025 00:00:00 GMT</pubDate>
+      <description>Fixing perl(IPC::Run) Dependency Error When Installing PostgreSQL 17 on Oracle Linux 8 Background While preparing a fresh Oracle Linux 8 server for a...</description>
+    </item>
+    <item>
+      <title>Psql Commands</title>
+      <link>https://alisvo.dev/blog/psql-commands/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/psql-commands/</guid>
+      <pubDate>Thu, 08 May 2025 00:00:00 GMT</pubDate>
+      <description>psql Cheat-Sheet &amp; Power User Guide 1 · Startup Sequence Environment – PGHOST , PGPORT , PGUSER , PGDATABASE are honoured. User profile – reads...</description>
+    </item>
+    <item>
+      <title>Postgresql Architecture, Basic Info</title>
+      <link>https://alisvo.dev/blog/postgresql-architecture-basic-info/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-architecture-basic-info/</guid>
+      <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL Reference Guide General Database Limits Maximum Database Size: Unlimited Maximum Table Size: 32 TB Maximum Row Size: 1.6 TB Maximum Field Size: 1...</description>
+    </item>
+    <item>
+      <title>Postgresql Example Setup (Red Hat Linux - Major Ver. 16)</title>
+      <link>https://alisvo.dev/blog/postgresql-example-setup-red-hat-linux-major-ver-16/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-example-setup-red-hat-linux-major-ver-16/</guid>
+      <pubDate>Wed, 07 May 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL 16 Enterprise‑Grade Installation Guide RHEL 8/9 Edition 1 · Preparation Checklist 64‑bit RHEL 8/9 minimal install, fully patched. Dedicated LVM...</description>
+    </item>
+    <item>
+      <title>Oracle 19c Dataguard Installation with DG Broker</title>
+      <link>https://alisvo.dev/blog/oracle-19c-dataguard-installation-with-dg-broker/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-19c-dataguard-installation-with-dg-broker/</guid>
+      <pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
+      <description>Oracle 19c Physical Standby Creation &amp; Management (RMAN Duplicate + Data Guard Broker) This article walks through building a physical standby using RMAN...</description>
+    </item>
+    <item>
+      <title>RMAN Duplicate To Another Server With Different SID</title>
+      <link>https://alisvo.dev/blog/rman-duplicate-to-another-server-with-different-sid/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/rman-duplicate-to-another-server-with-different-sid/</guid>
+      <pubDate>Tue, 29 Apr 2025 00:00:00 GMT</pubDate>
+      <description>Cloning MYDBPROD → MYDBTEST with RMAN DUPLICATE Sometimes we need a quick, up‑to‑date copy of production for troubleshooting or functional testing. The...</description>
+    </item>
+    <item>
+      <title>Moving Oracle Datafiles and Log Files in Windows Server</title>
+      <link>https://alisvo.dev/blog/moving-oracle-datafiles-and-log-files-in-windows-server/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/moving-oracle-datafiles-and-log-files-in-windows-server/</guid>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 GMT</pubDate>
+      <description>Consolidating Oracle 19c Datafiles &amp; Redo Logs onto a Single Drive Contents 0 · Executive Summary 1 · Pre‑Start Requirements 2 · Inventory &amp; Duplicate‑Name...</description>
+    </item>
+    <item>
+      <title>Script to export</title>
+      <link>https://alisvo.dev/blog/script-to-export/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/script-to-export/</guid>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 GMT</pubDate>
+      <description>Oracle expdp Export Job Script This bash script runs an Oracle Data Pump export (expdp) job with anonymized parameters (except the expdp binary path)....</description>
+    </item>
+    <item>
+      <title>SQL Server Basic Healthcheck Queries</title>
+      <link>https://alisvo.dev/blog/sql-server-basic-healthcheck-queries/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/sql-server-basic-healthcheck-queries/</guid>
+      <pubDate>Mon, 10 Feb 2025 00:00:00 GMT</pubDate>
+      <description>This guide provides a suite of T‑SQL queries that give you a quick snapshot of your SQL Server’s health. The toolkit covers: Database Health Status Top 5...</description>
+    </item>
+    <item>
+      <title>Unlock Oracle Users and Make Their Password Unexpirable</title>
+      <link>https://alisvo.dev/blog/unlock-oracle-users-and-make-their-password-unexpirable/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/unlock-oracle-users-and-make-their-password-unexpirable/</guid>
+      <pubDate>Fri, 07 Feb 2025 00:00:00 GMT</pubDate>
+      <description>When an Oracle database user account expires, it needs to be unlocked and assigned to a profile that ensures password expiration does not occur. Follow...</description>
+    </item>
+    <item>
+      <title>How To Move Datafiles In Oracle 11gR2</title>
+      <link>https://alisvo.dev/blog/how-to-move-datafiles-in-oracle-11gr2/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/how-to-move-datafiles-in-oracle-11gr2/</guid>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 GMT</pubDate>
+      <description>Oracle 11gR2 üzerinde kullanıcı veya sistem veri kütüklerini (datafiles) kontrol dosyası ile senkron şekilde yeni bir dizine taşıma rehberi.</description>
+    </item>
+    <item>
+      <title>Practical RMAN Restore Scenario For Linux on Different Server</title>
+      <link>https://alisvo.dev/blog/practical-rman-restore-scenario-for-linux-on-different-server/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/practical-rman-restore-scenario-for-linux-on-different-server/</guid>
+      <pubDate>Fri, 31 Jan 2025 00:00:00 GMT</pubDate>
+      <description>Practical RMAN Restore Guide This guide shows how to restore and relocate an Oracle database via RMAN. We’ll assume you want all datafiles in a new folder (...</description>
+    </item>
+    <item>
+      <title>Running SQLCMD in PowerShell via SQL Server Agent</title>
+      <link>https://alisvo.dev/blog/running-sqlcmd-in-powershell-via-sql-server-agent/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/running-sqlcmd-in-powershell-via-sql-server-agent/</guid>
+      <pubDate>Wed, 29 Jan 2025 00:00:00 GMT</pubDate>
+      <description>Learn how to execute a SQL query via SQL Server Agent using PowerShell and sqlcmd . This method ensures UTF-8 compatibility and proper handling of...</description>
+    </item>
+    <item>
+      <title>Creating Jobs With Different Users via pg_cron in Azure Postgresql Flexible Server</title>
+      <link>https://alisvo.dev/blog/creating-jobs-with-different-users-via-pgcron-in-azure-postgresql-flexible-server/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/creating-jobs-with-different-users-via-pgcron-in-azure-postgresql-flexible-server/</guid>
+      <pubDate>Tue, 21 Jan 2025 00:00:00 GMT</pubDate>
+      <description>PostgreSQL pg_cron: Scheduling Materialized View Refresh Across Databases In this tutorial, I’ll walk you through the process of scheduling a Materialized...</description>
+    </item>
+    <item>
+      <title>SYSAUX Tablespace Filling , Cause: WRI$_ADV_TASKS filled with AUTO__STATS_ADVISOR_TASK</title>
+      <link>https://alisvo.dev/blog/sysaux-tablespace-filling-cause-wriadvtasks-filled-with-autostatsadvisortask/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/sysaux-tablespace-filling-cause-wriadvtasks-filled-with-autostatsadvisortask/</guid>
+      <pubDate>Wed, 18 Dec 2024 00:00:00 GMT</pubDate>
+      <description>The SYSAUX tablespace might fill up with records from advisor tasks. Use the following steps to identify and resolve the issue. Step 1: Check SYSAUX Usage...</description>
+    </item>
+    <item>
+      <title>Oracle 19c Failover Steps</title>
+      <link>https://alisvo.dev/blog/oracle-19c-failover-steps/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-19c-failover-steps/</guid>
+      <pubDate>Mon, 11 Nov 2024 00:00:00 GMT</pubDate>
+      <description>Oracle 19c Data Guard ortamlarında felaket anında standby veritabanını primary moda geçirme (Failover) operasyon adımları.</description>
+    </item>
+    <item>
+      <title>Oracle Database 19c Switchover Steps</title>
+      <link>https://alisvo.dev/blog/oracle-database-19c-switchover-steps/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-database-19c-switchover-steps/</guid>
+      <pubDate>Mon, 11 Nov 2024 00:00:00 GMT</pubDate>
+      <description>Oracle 19c Data Guard mimarisinde planlı bakım ve veri merkezi geçişleri için sıfır veri kayıplı Switchover rehberi.</description>
+    </item>
+    <item>
+      <title>Adjusting SGA &amp; PGA In Oracle Databases</title>
+      <link>https://alisvo.dev/blog/adjusting-sga-pga-in-oracle-databases/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/adjusting-sga-pga-in-oracle-databases/</guid>
+      <pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
+      <description>Oracle veritabanlarında memory_target, SGA ve PGA bellek parametrelerinin incelenmesi ve dinamik olarak ayarlanması adımları.</description>
+    </item>
+    <item>
+      <title>AUDIT Table Cleaning</title>
+      <link>https://alisvo.dev/blog/audit-table-cleaning/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/audit-table-cleaning/</guid>
+      <pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
+      <description>1. Identify Large Segments in the SYSTEM Tablespace Before deleting records, you may want to identify which segments occupy the most space in the SYSTEM...</description>
+    </item>
+    <item>
+      <title>Quick Reconfiguration of a Corrupted Standby Database in Oracle Data Guard</title>
+      <link>https://alisvo.dev/blog/quick-reconfiguration-of-a-corrupted-standby-database-in-oracle-data-guard/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/quick-reconfiguration-of-a-corrupted-standby-database-in-oracle-data-guard/</guid>
+      <pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
+      <description>The following steps can be used to quickly reconfigure a corrupted standby database in Oracle Data Guard. These steps assume the configurations are already...</description>
+    </item>
+    <item>
+      <title>Partitioning existing table in PostgreSQL</title>
+      <link>https://alisvo.dev/blog/partitioning-existing-table-in-postgresql/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/partitioning-existing-table-in-postgresql/</guid>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 GMT</pubDate>
+      <description>How to partition an existing large table in PostgreSQL with range partitioning, automated partition creation, and indexing.</description>
+    </item>
+    <item>
+      <title>Finding User Objects with Tablespaces in Oracle Database</title>
+      <link>https://alisvo.dev/blog/finding-user-objects-with-tablespaces-in-oracle-database/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/finding-user-objects-with-tablespaces-in-oracle-database/</guid>
+      <pubDate>Wed, 26 Jun 2024 00:00:00 GMT</pubDate>
+      <description>The query below shows what tablespaces does user have files and what are the total sizes of their objects in there.</description>
+    </item>
+    <item>
+      <title>Remove Expire Without Changing Password on a User in Oracle Database</title>
+      <link>https://alisvo.dev/blog/remove-expire-without-changing-password-on-a-user-in-oracle-database/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/remove-expire-without-changing-password-on-a-user-in-oracle-database/</guid>
+      <pubDate>Tue, 04 Jun 2024 00:00:00 GMT</pubDate>
+      <description>How to reset or unexpire an Oracle database user password without knowing or changing the current password.</description>
+    </item>
+    <item>
+      <title>Oracle 19C Client Silent Setup On Red Hat Linux</title>
+      <link>https://alisvo.dev/blog/oracle-19c-client-silent-setup-on-red-hat-linux/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-19c-client-silent-setup-on-red-hat-linux/</guid>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 GMT</pubDate>
+      <description>To install the Oracle Database Client with the necessary patches, follow the steps below: 1. Install Pre-requisite RPM You might need to install some...</description>
+    </item>
+    <item>
+      <title>Oracle Backup &amp; Recovery Scenarios with RMAN</title>
+      <link>https://alisvo.dev/blog/backup-recovery-scenarios/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/backup-recovery-scenarios/</guid>
+      <pubDate>Sun, 17 Mar 2024 00:00:00 GMT</pubDate>
+      <description>Common Oracle RMAN backup and disaster recovery scenarios: compressed full backup, missing datafiles, and lost control files.</description>
+    </item>
+    <item>
+      <title>Oracle Dataguard Recovery Steps &amp; Status Check</title>
+      <link>https://alisvo.dev/blog/oracle-dataguard-recovery-steps-status-check/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-dataguard-recovery-steps-status-check/</guid>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate>
+      <description>Steps and status checking queries to recover disconnected and unrecoverable standby databases in Oracle Data Guard.</description>
+    </item>
+    <item>
+      <title>Oracle Database Gateway Setup On Linux (For MSSQL Connections)</title>
+      <link>https://alisvo.dev/blog/oracle-database-gateway-setup-on-linux-for-mssql-connections/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-database-gateway-setup-on-linux-for-mssql-connections/</guid>
+      <pubDate>Fri, 02 Feb 2024 00:00:00 GMT</pubDate>
+      <description>Step-by-step setup and configuration guide for Oracle Database Gateway for SQL Server (dg4msql) on Linux.</description>
+    </item>
+    <item>
+      <title>Scheduling one-time jobs for Linux</title>
+      <link>https://alisvo.dev/blog/scheduling-one-time-jobs-for-linux/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/scheduling-one-time-jobs-for-linux/</guid>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
+      <description>Using the at Command for Scheduled Maintenance We may need some maintenance works for our database systems. If we don&apos;t want to spend our evening with all...</description>
+    </item>
+    <item>
+      <title>How To Create Streaming Replication In PostgreSQL in Linux?</title>
+      <link>https://alisvo.dev/blog/how-to-create-streaming-replication-in-postgresql-in-linux/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/how-to-create-streaming-replication-in-postgresql-in-linux/</guid>
+      <pubDate>Fri, 22 Dec 2023 00:00:00 GMT</pubDate>
+      <description>A step-by-step guide to setting up streaming replication in PostgreSQL on Linux servers, including configuration, backup automation, and replication monitoring.</description>
+    </item>
+    <item>
+      <title>Running Python Functions like a Batch Program</title>
+      <link>https://alisvo.dev/blog/running-python-functions-like-a-batch-program/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/running-python-functions-like-a-batch-program/</guid>
+      <pubDate>Wed, 04 Oct 2023 00:00:00 GMT</pubDate>
+      <description>How to automate batch procedures in Python by orchestrating functions with argument tuples in a loop.</description>
+    </item>
+    <item>
+      <title>Restore Single Database from Backup Files Which Are Taken by Pg_Dumpall</title>
+      <link>https://alisvo.dev/blog/restore-single-database-from-backup-files-which-are-taken-by-pgdumpall/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/restore-single-database-from-backup-files-which-are-taken-by-pgdumpall/</guid>
+      <pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate>
+      <description>Normally, you can&apos;t restore a single database from a cluster backup that are taken via pg_dumpall.In order to achieve that, you can follow the steps below:...</description>
+    </item>
+    <item>
+      <title>How to Create/Execute/Drop Tuning Tasks</title>
+      <link>https://alisvo.dev/blog/how-to-createexecutedrop-tuning-tasks/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/how-to-createexecutedrop-tuning-tasks/</guid>
+      <pubDate>Thu, 24 Aug 2023 00:00:00 GMT</pubDate>
+      <description>Oracle SQL Tuning Advisor (STA) ile sorgu optimizasyon görevleri oluşturma, çalıştırma ve silme adımları.</description>
+    </item>
+    <item>
+      <title>Some Oracle Query Optimization Tips</title>
+      <link>https://alisvo.dev/blog/some-oracle-query-optimization-tips/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/some-oracle-query-optimization-tips/</guid>
+      <pubDate>Wed, 14 Jun 2023 00:00:00 GMT</pubDate>
+      <description>Practical query optimization tips for Oracle Database, including REGEXP_LIKE and table collection functions.</description>
+    </item>
+    <item>
+      <title>ORA-00980 Synonym Translation is not Valid</title>
+      <link>https://alisvo.dev/blog/ora-00980-synonym-translation-is-not-valid/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/ora-00980-synonym-translation-is-not-valid/</guid>
+      <pubDate>Fri, 26 May 2023 00:00:00 GMT</pubDate>
+      <description>Sometimes if the base object of a synonym is dropped without dropping the synonym, ORA-00980 error may occur. Here is how to detect broken synonyms.</description>
+    </item>
+    <item>
+      <title>Warn yourself when your linux server isn&apos;t restarted for a while after an update (Python)</title>
+      <link>https://alisvo.dev/blog/warn-yourself-when-your-linux-server-isnt-restarted-for-a-while-after-an-update/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/warn-yourself-when-your-linux-server-isnt-restarted-for-a-while-after-an-update/</guid>
+      <pubDate>Tue, 20 Dec 2022 00:00:00 GMT</pubDate>
+      <description>A Python script for RHEL, CentOS, and Oracle Enterprise Linux to alert administrators when a newly installed kernel hasn&apos;t been activated by a reboot.</description>
+    </item>
+    <item>
+      <title>Streaming Replication Without Archiving (Linux)</title>
+      <link>https://alisvo.dev/blog/streaming-replication-without-archiving-linux/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/streaming-replication-without-archiving-linux/</guid>
+      <pubDate>Thu, 29 Sep 2022 00:00:00 GMT</pubDate>
+      <description>Initial Steps Summary Let’s sum up the initial steps, then dive into key points: Ensure that the primary and replica servers have proper firewall...</description>
+    </item>
+    <item>
+      <title>Checking Old Versions Of Tables Via Oracle Database Flashback Queries</title>
+      <link>https://alisvo.dev/blog/checking-old-versions-of-tables-via-oracle-database-flashback-queries/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/checking-old-versions-of-tables-via-oracle-database-flashback-queries/</guid>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
+      <description>Sometimes in production servers, you might need to check specific record(s) in order get older versions. Oracle has Flashback technology to revert your...</description>
+    </item>
+    <item>
+      <title>Creating A Script That Fixes Unusable Indexes</title>
+      <link>https://alisvo.dev/blog/creating-a-script-that-fixes-unusable-indexes/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/creating-a-script-that-fixes-unusable-indexes/</guid>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
+      <description>Oracle veritabanında UNUSABLE durumdaki indeksleri tespit eden ve otomatik olarak REBUILD eden pratik SQL scripti.</description>
+    </item>
+    <item>
+      <title>PostgreSQL Password File</title>
+      <link>https://alisvo.dev/blog/postgresql-password-file/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-password-file/</guid>
+      <pubDate>Tue, 14 Jun 2022 00:00:00 GMT</pubDate>
+      <description>When we need to connect somewhere via cron job, batch script etc. , .pgpass file can be really useful for authorization. Connection information is saved...</description>
+    </item>
+    <item>
+      <title>Run Scripts in the Background Via Nohup</title>
+      <link>https://alisvo.dev/blog/run-scripts-in-the-background-via-nohup/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/run-scripts-in-the-background-via-nohup/</guid>
+      <pubDate>Fri, 10 Jun 2022 00:00:00 GMT</pubDate>
+      <description>How to run long-running shell scripts in the background and redirect output to a log file using nohup and disown.</description>
+    </item>
+    <item>
+      <title>How to Find Similar Records in Oracle/Postgresql Database?</title>
+      <link>https://alisvo.dev/blog/how-to-find-similar-records-in-oraclepostgresql-database/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/how-to-find-similar-records-in-oraclepostgresql-database/</guid>
+      <pubDate>Wed, 25 May 2022 00:00:00 GMT</pubDate>
+      <description>Sometimes we may need to find some similar data (not exact one) regarding to our needs. For example, one digit of the phone number may have been registered...</description>
+    </item>
+    <item>
+      <title>Returning Multiple Hard-Coded Rows in Oracle Database</title>
+      <link>https://alisvo.dev/blog/returning-multiple-hard-coded-rows-in-oracle-database/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/returning-multiple-hard-coded-rows-in-oracle-database/</guid>
+      <pubDate>Wed, 25 May 2022 00:00:00 GMT</pubDate>
+      <description>Sometimes dummy and hard-coded vales might be needed for testing or some other purposes. We can return single rows easily with &apos;select ...... from dual&apos;....</description>
+    </item>
+    <item>
+      <title>Finding Long Running Queries in Oracle Database</title>
+      <link>https://alisvo.dev/blog/finding-long-running-queries-in-oracle-database/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/finding-long-running-queries-in-oracle-database/</guid>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 GMT</pubDate>
+      <description>It could be tricky to detect when your database slows down for no reason. At first, you should check system resources (CPU - RAM usage, network etc.) and if...</description>
+    </item>
+    <item>
+      <title>Faster Way To Dump And Restore In Postgres</title>
+      <link>https://alisvo.dev/blog/faster-way-to-dump-and-restore-in-postgres/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/faster-way-to-dump-and-restore-in-postgres/</guid>
+      <pubDate>Fri, 22 Apr 2022 00:00:00 GMT</pubDate>
+      <description>In general, people find dumping their whole databases in sever by pg_dumpall easily. But it takes too long since this tool is not utilized for using...</description>
+    </item>
+    <item>
+      <title>Compressing / Decompressing Backup Files With Pigz</title>
+      <link>https://alisvo.dev/blog/compressing-decompressing-backup-files-with-pigz/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/compressing-decompressing-backup-files-with-pigz/</guid>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 GMT</pubDate>
+      <description>1. Check Required Packages Ensure the yum packages openssl and pigz are installed on your system. 2. Compress and Encrypt Files Use the following command to...</description>
+    </item>
+    <item>
+      <title>Virtual IP Configuration for PostgreSQL (OEL8)</title>
+      <link>https://alisvo.dev/blog/virtual-ip-configuration-for-postgresql-oel8/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/virtual-ip-configuration-for-postgresql-oel8/</guid>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 GMT</pubDate>
+      <description>Step-by-step guide for configuring a virtual IP (VIP) for PostgreSQL on Oracle Enterprise Linux 8 (OEL8).</description>
+    </item>
+    <item>
+      <title>Oracle Database Upgrade With OPatch Tool (RHEL/Centos/OEL)</title>
+      <link>https://alisvo.dev/blog/oracle-database-upgrade-with-opatch-tool-rhelcentosoel/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/oracle-database-upgrade-with-opatch-tool-rhelcentosoel/</guid>
+      <pubDate>Mon, 14 Feb 2022 00:00:00 GMT</pubDate>
+      <description>Follow these steps to upgrade an Oracle Database using the OPatch tool: 1. Download and Prepare Files Download the patch you want to install along with the...</description>
+    </item>
+    <item>
+      <title>Upgrading Password Encryption from Md5 to Scram-sha-256 in a Postgresql Database</title>
+      <link>https://alisvo.dev/blog/upgrading-password-encryption-from-md5-to-scram-sha-256-in-a-postgresql-database/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/upgrading-password-encryption-from-md5-to-scram-sha-256-in-a-postgresql-database/</guid>
+      <pubDate>Mon, 14 Feb 2022 00:00:00 GMT</pubDate>
+      <description>How to migrate PostgreSQL database password authentication from MD5 to SCRAM-SHA-256 securely.</description>
+    </item>
+    <item>
+      <title>POSTGRESQL UPGRADE WITH PG_UPGRADE UTILITY IN RHEL/CENTOS/OEL</title>
+      <link>https://alisvo.dev/blog/postgresql-upgrade-with-pgupgrade-utility-in-rhelcentosoel/</link>
+      <guid isPermaLink="true">https://alisvo.dev/blog/postgresql-upgrade-with-pgupgrade-utility-in-rhelcentosoel/</guid>
+      <pubDate>Sat, 12 Feb 2022 00:00:00 GMT</pubDate>
+      <description>Upgrading PostgreSQL can be a smooth process if you follow the necessary steps carefully. Below is a comprehensive guide to help you through the upgrade....</description>
+    </item>
+  </channel>
+</rss>

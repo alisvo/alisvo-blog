@@ -1,0 +1,40 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  articleDate?: string;
+}
+
+const { title, description, image, articleDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="tr" class="scroll-smooth">
+  <head>
+    <BaseHead title={title} description={description} image={image} articleDate={articleDate} />
+  </head>
+  <body class="flex flex-col min-h-screen bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-slate-100 antialiased selection:bg-emerald-500/20 selection:text-emerald-700 dark:selection:text-emerald-300">
+    <!-- Ambient Background Lighting -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/10 dark:bg-emerald-500/5 blur-[120px] rounded-full"></div>
+      <div class="absolute top-[600px] -right-40 w-[400px] h-[400px] bg-cyan-500/5 blur-[100px] rounded-full"></div>
+    </div>
+
+    <!-- Grid Background Texture -->
+    <div class="fixed inset-0 pointer-events-none z-[-2] bg-grid-pattern opacity-60"></div>
+
+    <Header />
+    
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

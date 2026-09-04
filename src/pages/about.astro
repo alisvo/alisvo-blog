@@ -1,0 +1,457 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TechBadge from '../components/TechBadge.astro';
+
+const philosophies = [
+  {
+    title: 'Önce Veri Bütünlüğü (ACID First)',
+    desc: 'Hiçbir hız kazanımı, bozulmuş veya kaybolmuş bir veriyi telafi edemez. Her mimari kararda ilk soru: "Veri tutarlılığı garanti altında mı?" olmalıdır.',
+    icon: 'shield',
+  },
+  {
+    title: 'Otomatize Et ya da Pişman Ol',
+    desc: 'Manuel yapılan her veritabanı operasyonu insan hatasına açıktır. Yedekleme, failover, archiving ve sağlık kontrolleri kodla yönetilmeli ve sürekli test edilmelidir.',
+    icon: 'cpu',
+  },
+  {
+    title: 'Sıfır Kesinti (Zero-Downtime) Kültürü',
+    desc: 'Canlı veritabanında lock oluşturan DDL işlemlerinden, büyük ölçekli sürüm yükseltmelerine (major upgrade) kadar her adım sıfır kesintiyle planlanmalıdır.',
+    icon: 'clock',
+  },
+  {
+    title: 'Kanıta Dayalı Optimizasyon (Metrics Driven)',
+    desc: 'Tahminlerle veya kulaktan dolma indekslerle veritabanı hızlandırılamaz. EXPLAIN ANALYZE, pg_stat_statements, buffer okumaları ve I/O metrikleri yol göstericimizdir.',
+    icon: 'chart',
+  },
+];
+
+const timeline = [
+  {
+    period: 'Mar 2024 - Devam Ediyor',
+    duration: '2 yıl 7 ay',
+    role: 'Senior Database Administrator',
+    company: 'SunExpress',
+    location: 'Antalya, Türkiye • Hibrit',
+    workType: 'Tam zamanlı',
+    description: 'Cloud ve On-prem ortamlarda ikamet eden yüksek işlem hacimli havacılık rezervasyon, biletleme ve operasyon veritabanı altyapılarının (PostgreSQL, Oracle,MS SQL, Mongo, MySQL) yönetimi, yüksek erişilebilirlik (HA), performans ince ayarları ve bash,python vb. scriptler ile operasyonel otomasyon süreçlerinin geliştirilmesi.',
+    skills: ['PostgreSQL', 'Oracle Database', 'Python', 'High Availability', 'Performance Tuning', 'Disaster Recovery','Azure','AWS'],
+  },
+  {
+    period: 'Haz 2021 - Mar 2024',
+    duration: '2 yıl 10 ay',
+    role: 'Database Administrator',
+    company: 'TÜBİTAK BİLGEM Kamu Sertifikasyon Merkezi',
+    location: 'Gebze, Kocaeli, Türkiye • Ofiste',
+    workType: 'Tam zamanlı',
+    description: 'Kritik kamu sertifikasyon ve güvenlik altyapılarında Oracle, MS SQL Server ve PostgreSQL  mimarilerinin 7/24 kesintisiz işletimi, veri yedekleme, felaket kurtarma senaryoları ve replikasyon yönetimi.',
+    skills: ['Oracle Data Guard', 'Patroni', 'PostgreSQL', 'Oracle Database', 'Linux', 'Security & Compliance'],
+  },
+  {
+    period: 'Eyl 2017 - May 2021',
+    duration: '3 yıl 9 ay',
+    role: 'Information Technology Specialist',
+    company: 'Turkish Airlines',
+    location: 'İstanbul, Türkiye • Ofiste',
+    workType: 'Tam zamanlı',
+    description: 'Kritik uçuş ve yer hizmetleri sistemlerinde Level 2 - 3 operasyonel destek; izleme sistemleri aracılığıyla sunucu, servis ve uygulama kontrollerinin sağlanması, kriz ve arıza durumlarının yönetimi, Linux ve Windows işletim seviyesinde konfigürasyon.',
+    skills: ['Linux', 'System Monitoring', 'L2/L3 Support', 'Incident Management', 'Windows Server'],
+  },
+  {
+    period: 'Ara 2014 - Eki 2015',
+    duration: '11 ay',
+    role: 'Software Developer',
+    company: 'Ada Yazılım Tic. Ltd. Şti.',
+    location: 'İstanbul, Türkiye',
+    workType: 'Tam zamanlı',
+    description: 'İş uygulamaları geliştirme, ilişkisel veritabanı tasarımı, SQL sorgu optimizasyonu ve uygulama-veritabanı entegrasyonu süreçlerinin kodlanması.',
+    skills: ['Software Development', 'SQL', 'Database Design', 'Backend'],
+  },
+  {
+    period: 'Ara 2013 - Ara 2014',
+    duration: '1 yıl 1 ay',
+    role: 'System & Database Consultant',
+    company: 'G Teknoloji',
+    location: 'İstanbul, Türkiye',
+    workType: 'Tam zamanlı',
+    description: 'Kurumsal müşterilerde Oracle Database ve Oracle Linux ortamlarının kurulumu, konfigürasyonu, yedekleme stratejileri ve sistem danışmanlığı desteği verilmesi.',
+    skills: ['Oracle Database', 'Oracle Linux', 'System Administration', 'Database Maintenance'],
+  },
+  {
+    period: 'Tem 2013 - Eyl 2013',
+    duration: '3 ay',
+    role: 'Web Developer Assistant',
+    company: 'Gazi Global Turizm ve Bilgi Teknolojileri A.Ş.',
+    location: 'İstanbul, Türkiye',
+    workType: 'Tam zamanlı',
+    description: 'Web geliştirme projelerinde arayüz ve veritabanı modüllerinin entegrasyonuna destek verilmesi.',
+    skills: ['Web Development', 'HTML/CSS', 'SQL'],
+  },
+];
+
+const certifications = [
+  {
+    name: 'AWS Certified Data Engineer – Associate',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'Ara 2025 – Ara 2028',
+    url: 'https://www.credly.com/badges/2f2eea20-23df-4490-aa22-5c1198af04a0/linked_in_profile',
+    badge: 'AWS',
+    color: 'border-amber-500/40 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40',
+  },
+  {
+    name: 'Oracle Certified Foundations Associate',
+    issuer: 'Oracle',
+    date: 'Oca 2025',
+    url: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=81B35C80D7FEEEC48E6FFA98502D3D506CC0A06C170287E7FB4A92C9270E2A0F',
+    badge: 'Oracle',
+    color: 'border-red-500/40 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40',
+  },
+  {
+    name: 'Microsoft Certified: Azure Database Administrator Associate',
+    issuer: 'Microsoft',
+    date: 'Ara 2024 – Ara 2025',
+    url: 'https://learn.microsoft.com/en-gb/users/alisairvelioullari-9934/transcript/dwgg8tmeogneez3',
+    badge: 'Azure',
+    color: 'border-sky-500/40 text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/40',
+  },
+  {
+    name: 'Red Hat Certified System Administrator (RHCSA)',
+    issuer: 'Red Hat',
+    date: 'Mar 2019 – Mar 2022',
+    url: 'https://www.redhat.com/rhtapps/services/verify/?certId=190-064-444',
+    badge: 'Red Hat',
+    color: 'border-rose-500/40 text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40',
+  },
+  {
+    name: 'SQL (Advanced) Certificate',
+    issuer: 'HackerRank',
+    date: 'Tem 2024',
+    url: 'https://www.hackerrank.com/certificates/12b28bfe905d',
+    badge: 'SQL Expert',
+    color: 'border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40',
+  },
+  {
+    name: 'SQL (Basic) Certificate',
+    issuer: 'HackerRank',
+    date: 'Ağu 2022',
+    url: 'https://www.hackerrank.com/certificates/e668a4eb490b',
+    badge: 'HackerRank',
+    color: 'border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40',
+  },
+  {
+    name: 'Problem Solving (Basic) Certificate',
+    issuer: 'HackerRank',
+    date: 'Tem 2020',
+    url: 'https://www.hackerrank.com/certificates/a0f3f77d666e',
+    badge: 'HackerRank',
+    color: 'border-teal-500/40 text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/40',
+  },
+];
+
+const trainings = [
+  {
+    title: "Python'a Giriş & DevOps için Python",
+    provider: 'Academy Club',
+    date: 'Eyl 2025',
+    tags: ['Terraform', 'Infra as Code', 'Python'],
+    url: 'https://verified.sertifier.com/tr/verify/82396171753251',
+  },
+  {
+    title: 'Complete Oracle Database Administration (19c/21c)',
+    provider: 'Udemy',
+    date: 'Tem 2022',
+    tags: ['Oracle Database', '19c/21c DBA'],
+    url: 'https://www.udemy.com/certificate/UC-0e3d997b-222e-4666-81d5-716baabc5b81/',
+  },
+  {
+    title: 'Advanced SQL : SQL Expert Certification Preparation',
+    provider: 'Udemy & TÜBİTAK',
+    date: 'Eyl 2022',
+    tags: ['SQL Tuning', 'TÜBİTAK'],
+    url: 'https://tubitak.udemy.com/certificate/UC-780b4b0f-8ae6-4e7f-ace6-d9f363de1aa2',
+  },
+  {
+    title: '70-462: SQL Server Database Administration',
+    provider: 'Udemy',
+    date: 'Nis 2022',
+    tags: ['MSSQL', 'Administration'],
+    url: 'https://www.udemy.com/certificate/UC-cbf0f812-ef50-4509-8c51-9aa3e4aeced9/',
+  },
+  {
+    title: 'Oracle Database: Administration Workshop',
+    provider: 'Oracle University',
+    date: 'Ara 2021',
+    tags: ['Oracle Workshop', 'DBA'],
+    url: '',
+  },
+  {
+    title: 'Linux System Engineer: Bash Shell Scripting for Automation',
+    provider: 'LinkedIn Learning',
+    date: 'Kas 2020',
+    tags: ['Linux', 'Bash Automation'],
+    url: 'https://www.linkedin.com/learning/certificates/182b4e8d6860c0d532472cec8dc8d2d3b92bbdb9284ee9d5693e1c19190506d6/',
+  },
+  {
+    title: 'SQL Essential Training',
+    provider: 'LinkedIn Learning',
+    date: 'Kas 2020',
+    tags: ['SQL', 'Data Modeling'],
+    url: 'https://www.linkedin.com/learning/certificates/a6c5e69b974a242997b6c63eebf07537823d276e825e85658a03a394c1b12dbd/',
+  },
+  {
+    title: 'Power BI ile Etkin İş Analitiği',
+    provider: 'Udemy',
+    date: 'Ağu 2021',
+    tags: ['Power BI', 'Analytics'],
+    url: 'https://udemy-certificate.s3.amazonaws.com/pdf/UC-9a938399-49be-4043-a934-8721d37679c3.pdf',
+  },
+  {
+    title: 'BTK Akademi C# Eğitimi',
+    provider: 'Bilgi Teknolojileri ve İletişim Kurumu (BTK)',
+    date: 'Tem 2020',
+    tags: ['C#', '.NET'],
+    url: '',
+  },
+];
+
+const competencies = [
+  'PostgreSQL',
+  'Oracle Database',
+  'Azure & AWS',
+  'Microsoft SQL Server',
+  'MySQL / MariaDB',
+  'Linux Kernel Tuning',
+  'High Availability',
+  'Disaster Recovery',
+  'Python for DevOps',
+  'Terraform (IaC)',
+  'Redis',
+  'Performance Tuning',
+  'pgBackRest / PITR',
+];
+---
+
+<BaseLayout
+  title="Hakkımda | Ali Sağırvelioğulları"
+  description="Ali Sağırvelioğulları - Senior Database Administrator & AWS Certified Data Engineer. SunExpress, TÜBİTAK BİLGEM ve Türk Hava Yolları kariyer yolculuğu, sertifikaları ve teknik uzmanlıkları."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    
+    <!-- Hero / Intro -->
+    <header class="mb-14 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+        <span>Kişisel Profil & Kariyer</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Hakkımda
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        Ben <strong class="font-semibold text-slate-900 dark:text-white">Ali Sağırvelioğulları</strong>. 
+        Kritik veri sistemlerinin güvenliği, sürekliliği ve performansı üzerine uzmanlaşmış bir 
+        <strong class="text-emerald-600 dark:text-emerald-400 font-semibold">Senior Database Administrator (DBA)</strong> ve 
+        <strong class="text-amber-600 dark:text-amber-400 font-semibold">AWS Certified Data Engineer</strong>'ım.
+      </p>
+    </header>
+
+    <!-- Bio Section -->
+    <section class="mb-16 space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+      <p>
+        Veritabanı yöneticiliğine olan tutkum, verinin bir uygulamanın "kalbi" olduğunu ve en ufak bir veri bozulması ya da kesintinin doğrudan iş süreçlerini durdurabildiğini fark ettiğimde başladı. Kariyerim boyunca havacılık (<strong>SunExpress</strong>, <strong>Türk Hava Yolları</strong>), kritik kamu güvenliği ve sertifikasyon altyapıları (<strong>TÜBİTAK BİLGEM</strong>) ile teknoloji danışmanlığı sektörlerinde görev aldım.
+      </p>
+      <p>
+        Günlük çalışmalarımda; <strong>PostgreSQL</strong>, <strong>Oracle</strong>, <strong>MSSQL</strong> ve <strong>AWS Bulut</strong> ortamlarının mimari tasarımı, kernel seviyesinde Linux I/O optimizasyonu, <strong>Patroni & Oracle Data Guard</strong> ile yüksek erişilebilirlik (HA), <strong>pgBackRest</strong> ile Point-in-Time Recovery (PITR) ve <strong>Python & Terraform</strong> ile altyapı otomasyon süreçlerine odaklanıyorum.
+      </p>
+    </section>
+
+    <!-- DBA Philosophy -->
+    <section class="mb-16 space-y-6">
+      <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+        Çalışma İlkelerim ve Mühendislik Felsefem
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {philosophies.map((item) => (
+          <div class="p-5 rounded-xl bg-white dark:bg-dark-card border border-slate-200/80 dark:border-dark-cardBorder shadow-sm space-y-2">
+            <h3 class="font-bold text-base text-slate-900 dark:text-slate-100">
+              {item.title}
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="mb-16 space-y-8">
+      <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
+        Kariyer Yolculuğu
+      </h2>
+
+      <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 sm:ml-4 space-y-10 pl-6 sm:pl-8">
+        {timeline.map((item) => (
+          <div class="relative group">
+            <!-- Dot -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-dark-bg border-4 border-emerald-500"></div>
+
+            <div class="space-y-2">
+              <div class="flex flex-wrap items-baseline gap-2">
+                <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                  {item.period}
+                </span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                  ({item.duration})
+                </span>
+              </div>
+
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                {item.role}
+              </h3>
+
+              <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+                <span>{item.company}</span>
+                <span class="text-slate-400 dark:text-slate-600">•</span>
+                <span class="text-xs font-normal text-slate-500 dark:text-slate-400">{item.location}</span>
+              </div>
+
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
+                {item.description}
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                {item.skills.map((skill) => (
+                  <span class="text-[11px] font-mono font-medium px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Professional Certifications -->
+    <section class="mb-16 space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            Resmi Sertifikalar & Yetkinlikler
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+            Doğrulanabilir küresel sertifikasyonlar ve akreditasyonlar.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {certifications.map((cert) => (
+          <div class="p-5 rounded-xl bg-white dark:bg-dark-card border border-slate-200/80 dark:border-dark-cardBorder flex flex-col justify-between shadow-sm hover:shadow transition-all group">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class={`text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded border ${cert.color}`}>
+                  {cert.badge}
+                </span>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                  {cert.date}
+                </span>
+              </div>
+              <h3 class="font-bold text-sm text-slate-900 dark:text-slate-100 leading-snug pt-1">
+                {cert.name}
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                {cert.issuer}
+              </p>
+            </div>
+
+            {cert.url && (
+              <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800">
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 group-hover:underline"
+                >
+                  <span>Yeterlilik Belgesini Doğrula</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Trainings and Development Courses -->
+    <section class="mb-16 space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+          Tamamlanan Mesleki Eğitimler & Kurslar
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+          Sürekli gelişim ve uzmanlaşma kapsamında tamamlanan mesleki eğitim programları.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {trainings.map((t) => (
+          <div class="p-4 rounded-xl bg-white dark:bg-dark-card border border-slate-200/80 dark:border-dark-cardBorder flex flex-col justify-between space-y-2.5 text-xs shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 text-slate-500 dark:text-slate-400 font-mono text-[11px] mb-1">
+                <span class="font-medium text-slate-700 dark:text-slate-300">{t.provider}</span>
+                <span>{t.date}</span>
+              </div>
+              <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm leading-snug">
+                {t.title}
+              </h3>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <div class="flex flex-wrap gap-1">
+                {t.tags.map((tag) => (
+                  <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              {t.url && (
+                <a
+                  href={t.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Belge</span>
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tech Stack in About -->
+    <section class="mb-16 space-y-6">
+      <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
+        Yönetilen Altyapı ve Teknolojiler
+      </h2>
+
+      <div class="flex flex-wrap gap-2.5">
+        {competencies.map((comp) => (
+          <TechBadge name={comp} />
+        ))}
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

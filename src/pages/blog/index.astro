@@ -1,0 +1,415 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Collect unique tags and counts
+const tagCounts = allPosts.reduce((acc: Record<string, number>, post) => {
+  post.data.tags.forEach((tag) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+  });
+  return acc;
+}, {});
+
+const sortedTags = Object.entries(tagCounts)
+  .sort((a, b) => b[1] - a[1])
+  .map(([tag]) => tag);
+---
+
+<BaseLayout
+  title="Teknik Makaleler ve DBA Notları | Ali Sağırvelioğulları"
+  description="PostgreSQL, Oracle, MSSQL, sorgu optimizasyonu, yüksek erişilebilirlik (HA) ve veritabanı felaket kurtarma (DR) konularında derinlemesine teknik makaleler."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    
+    <!-- Page Header -->
+    <header class="mb-10 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+          <span>Teknik Kütüphane • {sortedPosts.length} Makale</span>
+        </div>
+        <a
+          href="/rss.xml"
+          class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-600 dark:text-amber-400 hover:underline"
+        >
+          <svg class="w-3.5 h-3.5" width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="6.18" cy="17.82" r="2.18" />
+            <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z" />
+          </svg>
+          RSS ile Takip Et
+        </a>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Makaleler & Teknik Notlar
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        Üretim ortamlarındaki tecrübeler, execution plan çözümlemeleri, veritabanı mimarisi, yedekleme ve felaket kurtarma senaryoları.
+      </p>
+
+      <!-- Search Input Box -->
+      <div class="pt-2 relative">
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-5 h-5" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Makalelerde ara... (örn: PostgreSQL, Oracle, RMAN, Index, Backup, Patroni)"
+            class="w-full pl-11 pr-10 py-3 rounded-xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-cardBorder text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-sm shadow-sm"
+          />
+          <button
+            id="clear-search-btn"
+            type="button"
+            class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hidden"
+            aria-label="Aramayı Temizle"
+          >
+            <svg class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter by Tags -->
+      <div class="pt-2 flex flex-wrap items-center gap-1.5" id="tag-cloud">
+        <button
+          class="tag-filter-btn px-3 py-1 text-xs font-mono rounded-lg bg-emerald-600 text-white font-semibold transition-all shadow-sm"
+          data-tag="all"
+        >
+          Tümü ({sortedPosts.length})
+        </button>
+        {sortedTags.map((tag) => (
+          <button
+            class="tag-filter-btn px-2.5 py-1 text-xs font-mono rounded-lg bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-cardBorder text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/50 transition-colors"
+            data-tag={tag.toLowerCase()}
+          >
+            #{tag} <span class="text-[10px] text-slate-400 dark:text-slate-500">({tagCounts[tag]})</span>
+          </button>
+        ))}
+      </div>
+    </header>
+
+    <!-- Search / Filter Results Status Bar -->
+    <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 mb-6 pb-2 border-b border-slate-100 dark:border-slate-800/80">
+      <span id="results-count">Yükleniyor...</span>
+      <span id="page-info"></span>
+    </div>
+
+    <!-- Articles List Container -->
+    <div id="posts-container" class="space-y-6">
+      {sortedPosts.map((post) => (
+        <div
+          class="post-item"
+          data-title={post.data.title.toLowerCase()}
+          data-description={post.data.description.toLowerCase()}
+          data-tags={post.data.tags.map((t) => t.toLowerCase()).join(' ')}
+        >
+          <ArticleCard post={post} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-posts" class="hidden text-center py-16 space-y-4">
+      <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto text-slate-400">
+        <svg class="w-6 h-6" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">Sonuç Bulunamadı</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Arama kriterlerinize veya seçilen etikete uygun makale bulunamadı.</p>
+      </div>
+      <button
+        id="reset-filter-btn"
+        type="button"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+      >
+        Tüm Filtreleri Temizle
+      </button>
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav id="pagination-nav" class="mt-12 pt-8 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between" aria-label="Sayfalama">
+      <button
+        id="prev-page-btn"
+        type="button"
+        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-cardBorder text-slate-700 dark:text-slate-200 hover:border-emerald-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+      >
+        <svg class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Önceki
+      </button>
+
+      <div id="page-numbers" class="flex items-center gap-1">
+        <!-- Dynamically populated page buttons -->
+      </div>
+
+      <button
+        id="next-page-btn"
+        type="button"
+        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-cardBorder text-slate-700 dark:text-slate-200 hover:border-emerald-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+      >
+        Sonraki
+        <svg class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </nav>
+
+  </div>
+</BaseLayout>
+
+<script>
+  function setupSearchAndPagination() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const resetFilterBtn = document.getElementById('reset-filter-btn');
+    const tagButtons = document.querySelectorAll('.tag-filter-btn');
+    const postItems = Array.from(document.querySelectorAll('.post-item')) as HTMLElement[];
+    const emptyState = document.getElementById('no-posts');
+    const resultsCount = document.getElementById('results-count');
+    const pageInfo = document.getElementById('page-info');
+    const paginationNav = document.getElementById('pagination-nav');
+    const pageNumbers = document.getElementById('page-numbers');
+    const prevBtn = document.getElementById('prev-page-btn') as HTMLButtonElement | null;
+    const nextBtn = document.getElementById('next-page-btn') as HTMLButtonElement | null;
+
+    if (!searchInput || !resultsCount || !pageNumbers || !prevBtn || !nextBtn || !paginationNav) return;
+
+    const POSTS_PER_PAGE = 8;
+    let currentTag = 'all';
+    let searchQuery = '';
+    let currentPage = 1;
+    let filteredPosts: HTMLElement[] = [...postItems];
+
+    // Read initial URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('tag')) currentTag = urlParams.get('tag')!.toLowerCase();
+    if (urlParams.has('q')) {
+      searchQuery = urlParams.get('q')!;
+      searchInput.value = searchQuery;
+      clearSearchBtn?.classList.remove('hidden');
+    }
+    if (urlParams.has('page')) {
+      const p = parseInt(urlParams.get('page')!, 10);
+      if (!isNaN(p) && p > 0) currentPage = p;
+    }
+
+    function syncUrl() {
+      const params = new URLSearchParams();
+      if (currentTag !== 'all') params.set('tag', currentTag);
+      if (searchQuery.trim()) params.set('q', searchQuery.trim());
+      if (currentPage > 1) params.set('page', currentPage.toString());
+      const queryStr = params.toString();
+      const newUrl = window.location.pathname + (queryStr ? `?${queryStr}` : '');
+      window.history.replaceState({}, '', newUrl);
+    }
+
+    function updateTagUI() {
+      tagButtons.forEach((btn) => {
+        const t = btn.getAttribute('data-tag');
+        if (t === currentTag) {
+          btn.classList.remove('bg-white', 'dark:bg-dark-card', 'text-slate-600', 'dark:text-slate-300');
+          btn.classList.add('bg-emerald-600', 'text-white', 'font-semibold');
+        } else {
+          btn.classList.remove('bg-emerald-600', 'text-white', 'font-semibold');
+          btn.classList.add('bg-white', 'dark:bg-dark-card', 'text-slate-600', 'dark:text-slate-300');
+        }
+      });
+    }
+
+    function filterPosts() {
+      const query = searchQuery.toLowerCase().trim();
+
+      filteredPosts = postItems.filter((item) => {
+        const title = item.getAttribute('data-title') || '';
+        const desc = item.getAttribute('data-description') || '';
+        const tags = item.getAttribute('data-tags') || '';
+
+        // Tag matching
+        const matchesTag = currentTag === 'all' || tags.includes(currentTag);
+        if (!matchesTag) return false;
+
+        // Query matching (searches in title, description, and tags)
+        if (!query) return true;
+        return title.includes(query) || desc.includes(query) || tags.includes(query);
+      });
+
+      const totalFiltered = filteredPosts.length;
+      const totalPages = Math.ceil(totalFiltered / POSTS_PER_PAGE) || 1;
+
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      renderPage();
+      renderPagination(totalPages);
+      syncUrl();
+    }
+
+    function renderPage() {
+      const totalFiltered = filteredPosts.length;
+
+      postItems.forEach((item) => {
+        item.style.display = 'none';
+      });
+
+      if (totalFiltered === 0) {
+        if (emptyState) emptyState.classList.remove('hidden');
+        paginationNav?.classList.add('hidden');
+        if (resultsCount) resultsCount.textContent = '0 makale bulundu';
+        if (pageInfo) pageInfo.textContent = '';
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+      paginationNav?.classList.remove('hidden');
+
+      const startIdx = (currentPage - 1) * POSTS_PER_PAGE;
+      const endIdx = Math.min(startIdx + POSTS_PER_PAGE, totalFiltered);
+
+      for (let i = startIdx; i < endIdx; i++) {
+        filteredPosts[i].style.display = 'block';
+      }
+
+      if (resultsCount) {
+        resultsCount.textContent = `${totalFiltered} makale listeleniyor (${startIdx + 1}-${endIdx})`;
+      }
+    }
+
+    function renderPagination(totalPages: number) {
+      if (!pageNumbers || !prevBtn || !nextBtn) return;
+
+      if (totalPages <= 1) {
+        paginationNav?.classList.add('hidden');
+        if (pageInfo) pageInfo.textContent = '';
+        return;
+      }
+
+      paginationNav?.classList.remove('hidden');
+      if (pageInfo) pageInfo.textContent = `Sayfa ${currentPage} / ${totalPages}`;
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+
+      pageNumbers.innerHTML = '';
+
+      // Generate smart page numbers (1, 2, ... current ... last)
+      const pagesToRender: (number | string)[] = [];
+      if (totalPages <= 7) {
+        for (let i = 1; i <= totalPages; i++) pagesToRender.push(i);
+      } else {
+        pagesToRender.push(1);
+        if (currentPage > 3) pagesToRender.push('...');
+
+        const start = Math.max(2, currentPage - 1);
+        const end = Math.min(totalPages - 1, currentPage + 1);
+        for (let i = start; i <= end; i++) pagesToRender.push(i);
+
+        if (currentPage < totalPages - 2) pagesToRender.push('...');
+        pagesToRender.push(totalPages);
+      }
+
+      pagesToRender.forEach((p) => {
+        if (typeof p === 'string') {
+          const dots = document.createElement('span');
+          dots.className = 'px-2 py-1 text-xs text-slate-400 select-none';
+          dots.textContent = '...';
+          pageNumbers.appendChild(dots);
+        } else {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `w-8 h-8 rounded-lg text-xs font-mono font-medium transition-all ${
+            p === currentPage
+              ? 'bg-emerald-600 text-white font-bold shadow-sm'
+              : 'bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-cardBorder text-slate-600 dark:text-slate-300 hover:border-emerald-500'
+          }`;
+          btn.textContent = p.toString();
+          btn.addEventListener('click', () => {
+            currentPage = p;
+            filterPosts();
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+          });
+          pageNumbers.appendChild(btn);
+        }
+      });
+    }
+
+    // Search input listener
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value;
+      currentPage = 1;
+      if (searchQuery.trim()) {
+        clearSearchBtn?.classList.remove('hidden');
+      } else {
+        clearSearchBtn?.classList.add('hidden');
+      }
+      filterPosts();
+    });
+
+    clearSearchBtn?.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      currentPage = 1;
+      filterPosts();
+      searchInput.focus();
+    });
+
+    resetFilterBtn?.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      currentTag = 'all';
+      clearSearchBtn?.classList.add('hidden');
+      currentPage = 1;
+      updateTagUI();
+      filterPosts();
+    });
+
+    // Tag buttons listener
+    tagButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tag = btn.getAttribute('data-tag') || 'all';
+        currentTag = tag;
+        currentPage = 1;
+        updateTagUI();
+        filterPosts();
+      });
+    });
+
+    // Prev / Next buttons
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        filterPosts();
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+      if (currentPage < totalPages) {
+        currentPage++;
+        filterPosts();
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      }
+    });
+
+    // Initial setup
+    updateTagUI();
+    filterPosts();
+  }
+
+  setupSearchAndPagination();
+  document.addEventListener('astro:after-swap', setupSearchAndPagination);
+</script>
